@@ -52,11 +52,11 @@ What to expect:
 - `--seed`: Seed for reproducibility (NumPy, torch, CUDA if present).
 
 ### `Mconf` feature sets
-- `1`: velocity + shear (`Ux, Uy, Uz, S1–S6, Cs`)
-- `2`: gradients + shear (`G1–G6, S1–S6, Cs`)
-- `3`: velocity + subgrid terms (`Ux, Uy, Uz, UUp1–UUp6, Cs`)
-- `4`: gradients + subgrid terms (`G1–G6, UUp1–UUp6, Cs`)
-- `5`: velocity + gradients + shear + subgrid terms (union of above + `Cs`)
+- `1`: `Ux, Uy, Uz, S1–S6, Cs`
+- `2`: `G1–G6, S1–S6, Cs`
+- `3`: `Ux, Uy, Uz, UUp1–UUp6, Cs`
+- `4`: `G1–G6, UUp1–UUp6, Cs`
+- `5`: union of above + `Cs`
 
 ## Outputs
 Artifacts land under `runs/<group>/` where `group` is derived from `model-mode` and `Re`.
