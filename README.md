@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/WED_Arch.png" width="650" align="center">
+  <img src="/WED_Arch_updated.png" width="650" align="center">
 </p>
 
 # WED_subset_experiments
