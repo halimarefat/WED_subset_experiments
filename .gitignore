@@ -1,0 +1,26 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.env/
+.venv/
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Project data and run artifacts
+datasets_csv/
+runs/
+
+# Model checkpoints
+*.pth
+*.pt
+*.ckpt
+
+# OS-specific
+.DS_Store
+Thumbs.db
