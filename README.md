@@ -26,6 +26,16 @@ python train_subset.py \
   --seed 42
 ```
 
+Example (WAE on R4 with 10 epochs):
+```
+python train_subset.py --Re R4 --Mconf 3 --model-mode WAE --epochs 10 --learning-rate 1e-3 --patience 20
+```
+
+What to expect:
+- Console: per-epoch train/val loss and R2; early stopping if val loss stalls.
+- Files during run: a new `runs/<group>/` (e.g., `runs/wae_R4`) with logs updating as epochs progress.
+- After run: `checkpoints/best_model.pt` (best weights), `logs/` (text/JSON history), `traced/model.pt` (TorchScript export if tracing succeeds).
+
 ### Arguments
 - `--Re`: Reynolds number selector (e.g., `R3`, `R4`, `R53`).
 - `--Mconf`: Model config key mapping to column headers `M1`–`M5`.
