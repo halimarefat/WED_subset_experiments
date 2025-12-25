@@ -4,6 +4,8 @@
 
 # WED_subset_experiments
 
+Wavelet-assisted encoder–decoder (WED) closure for LES that keeps the Germano–Lilly dynamic Smagorinsky formulation but learns an implicit multiscale representation: explicit test filtering, spatial averaging, and coefficient clipping are replaced by encoder–decoder integrated with a wavelet loss enforcing scale-wise fidelity. 
+
 ## Environment
 - Python 3.10+ recommended.
 - Install deps: `pip install -r requirements.txt`
@@ -15,7 +17,7 @@ All configuration is via CLI flags (defaults shown):
 python train_subset.py \
   --Re R4 \
   --Mconf 3 \
-  --model-mode WAE \
+  --model-mode WED \
   [--wavelet] \
   --train-fraction 1.0 \
   --train-rows None \
@@ -26,20 +28,20 @@ python train_subset.py \
   --seed 42
 ```
 
-Example (WAE on R4 with 10 epochs):
+Example (WED on R4 with 10 epochs):
 ```
-python train_subset.py --Re R4 --Mconf 3 --model-mode WAE --epochs 10 --learning-rate 1e-3 --patience 20
+python train_subset.py --Re R4 --Mconf 3 --model-mode WED --epochs 10 --learning-rate 1e-3 --patience 20
 ```
 
 What to expect:
 - Console: per-epoch train/val loss and R2; early stopping if val loss stalls.
-- Files during run: a new `runs/<group>/` (e.g., `runs/wae_R4`) with logs updating as epochs progress.
+- Files during run: a new `runs/<group>/` (e.g., `runs/wed_R4`) with logs updating as epochs progress.
 - After run: `checkpoints/best_model.pt` (best weights), `logs/` (text/JSON history), `traced/model.pt` (TorchScript export if tracing succeeds).
 
 ### Arguments
 - `--Re`: Reynolds number selector (e.g., `R3`, `R4`, `R53`).
 - `--Mconf`: Model config key mapping to column headers `M1`–`M5`.
-- `--model-mode`: `WAE` or `MLP`.
+- `--model-mode`: `WED` or `MLP`.
 - `--wavelet`: If set, uses `WaveletLoss`; otherwise MSE.
 - `--train-fraction`: Fraction of the available train rows to sample (0–1].
 - `--train-rows`: Exact number of train rows to sample (overrides fraction when provided).
