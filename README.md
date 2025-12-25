@@ -39,7 +39,7 @@ What to expect:
 - After run: `checkpoints/best_model.pt` (best weights), `logs/` (text/JSON history), `traced/model.pt` (TorchScript export if tracing succeeds).
 
 ### Arguments
-- `--Re`: Reynolds number selector (e.g., `R3`, `R4`, `R53`).
+- `--Re`: Reynolds number selector (e.g., `R3`, `R4`, `R53`). Codes: `R3` = 10^3, `R4` = 10^4, `R53` = 5x10^3 (5e3).
 - `--Mconf`: Model config key mapping to column headers `M1`–`M5`.
 - `--model-mode`: `WED` or `MLP`.
 - `--wavelet`: If set, uses `WaveletLoss`; otherwise MSE.
