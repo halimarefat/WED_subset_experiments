@@ -15,6 +15,7 @@ dist/
 # Project data and run artifacts
 datasets_csv/
 runs/
+datasets_csv.zip
 
 # Model checkpoints
 *.pth
