@@ -47,7 +47,7 @@ What to expect:
 - `--train-rows`: Exact number of train rows to sample (overrides fraction when provided).
 - `--split-size`: Portion of sampled data used for training; remainder is validation.
 - `--epochs`: Number of epochs.
-- `--learning-rate`: Adam learning rate.
+- `--learning-rate`: Initial Adam LR; StepLR scales it by 0.2 every 3 epochs (dynamic schedule).
 - `--patience`: Early-stopping patience on validation loss.
 - `--seed`: Seed for reproducibility (NumPy, torch, CUDA if present).
 
