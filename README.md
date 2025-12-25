@@ -1,7 +1,4 @@
 # WED_subset_experiments
-<<<<<<< HEAD
-WED_subset_experiments
-=======
 
 ## Environment
 - Python 3.10+ recommended.
@@ -50,4 +47,3 @@ Artifacts land under `runs/<group>/` where `group` is derived from `model-mode` 
 - `checkpoints/`: best model `*.pt`.
 - `logs/`: per-epoch log and JSON history.
 - `traced/`: TorchScript traced model for export.
->>>>>>> 74b08f4 (initial commit)
