@@ -51,3 +51,15 @@ Artifacts land under `runs/<group>/` where `group` is derived from `model-mode` 
 - `checkpoints/`: best model `*.pt`.
 - `logs/`: per-epoch log and JSON history.
 - `traced/`: TorchScript traced model for export.
+
+## Data
+Download the dataset zip (~0.9 GB) and unpack it at the repo root so that `datasets_csv/` exists alongside `train_subset.py`:
+1) Download: https://drive.google.com/file/d/16FZWpGsZ7-_c49XtYwS0JinKBCzSZw1X/view?usp=sharing
+2) Place the zip in `WED_subset_experiments/` and extract to produce `datasets_csv/`.
+
+Contents of `datasets_csv/`:
+- `original/{train,test}/fieldData_R{3,4,53}_{seen,unseen}.csv`: raw fields.
+- `normalized/{train,test}/..._norm.csv`: z-scored fields.
+- `coeffs/{train,test}/..._means.csv` and `..._scales.csv`: per-column normalization stats.
+
+Column schema (in order): `t, X, Y, Z, Ux, Uy, Uz, G1-6 (velocity gradients), S1-6 (shear), UUp1-6 (subgrid stresses), Cs (Smagorinsky coefficient)`.
