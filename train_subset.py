@@ -16,7 +16,7 @@ from tqdm import tqdm
 
 from utils.loss import WaveletLoss
 from model.mlp import mlp
-from model.wae import WAE
+from model.wed import WED
 from utils.utils import (
     M1_HEADERS,
     M2_HEADERS,
@@ -39,7 +39,7 @@ class Stage(Enum):
 class TrainingConfig:
     Re: str = "R4"
     Mconf: str = "3"
-    model_mode: str = "WAE"
+    model_mode: str = "WED"
     wavelet: bool = False
     train_fraction: float = 1.0
     train_rows: int | None = None
@@ -54,7 +54,7 @@ class TrainingConfig:
         parser = argparse.ArgumentParser(description="Train with controllable dataset size.")
         parser.add_argument("--Re", default=cls.Re, help="Reynolds number selector, e.g., R3, R4, R53")
         parser.add_argument("--Mconf", default=cls.Mconf, help="Model configuration, matches M*_HEADERS")
-        parser.add_argument("--model-mode", choices=["WAE", "MLP"], default=cls.model_mode)
+        parser.add_argument("--model-mode", choices=["WED", "MLP"], default=cls.model_mode)
         parser.add_argument("--wavelet", action="store_true", help="Use WaveletLoss instead of MSE")
         parser.add_argument("--train-fraction", type=float, default=cls.train_fraction, help="Fraction of train set to use (0-1].")
         parser.add_argument(
@@ -91,7 +91,7 @@ class TrainingConfig:
     @property
     def group_name(self) -> str:
         suffix = f"R10{self.Re[1]}"
-        return f"wae_{suffix}" if self.model_mode == "WAE" else f"mlp_{suffix}"
+        return f"wed_{suffix}" if self.model_mode == "WED" else f"mlp_{suffix}"
 
     @property
     def dataset_tag(self) -> str:
@@ -199,8 +199,8 @@ class Trainer:
 
     def _build_model(self) -> nn.Module:
         input_dim = self.train_loader.dataset[0].shape[0] - 1  # type: ignore[index]
-        if self.cfg.model_mode == "WAE":
-            return WAE(in_channels=input_dim, out_channels=1, bilinear=True)
+        if self.cfg.model_mode == "WED":
+            return WED(in_channels=input_dim, out_channels=1, bilinear=True)
         return mlp(input_size=input_dim, output_size=1, hidden_layers=5, neurons_per_layer=[60, 60, 60, 60, 60])
 
     def _forward_epoch(self, stage: Stage) -> tuple[float, float]:

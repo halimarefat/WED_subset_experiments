@@ -4,7 +4,7 @@ import torch.nn as nn
 from .blocks import DoubleConv, Down, Up, OutConv
 
 
-class WAE(nn.Module):
+class WED(nn.Module):
     def __init__(self, in_channels, out_channels, bilinear=True):
         super().__init__()
         self.n_channels = in_channels
