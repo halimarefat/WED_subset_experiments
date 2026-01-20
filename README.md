@@ -2,7 +2,7 @@
   <img src="/WED_Arch_updated.png" width="650" align="center">
 </p>
 
-# WED_subset_experiments
+# Wavelet-Assisted Encoder–Decoder (WED) 
 
 Wavelet-assisted encoder–decoder (WED) closure for LES that keeps the Germano–Lilly dynamic Smagorinsky formulation but learns an implicit multiscale representation: explicit test filtering, spatial averaging, and coefficient clipping are replaced by encoder–decoder integrated with a wavelet loss enforcing scale-wise fidelity. 
 
